@@ -1,0 +1,19 @@
+version: "3"
+services:
+  synapse:
+    image: "matrixdotorg/synapse:latest"
+    volumes:
+      - "./synapse_data:/data"
+    environment:
+      SYNAPSE_SERVER_NAME: "synapse"
+      SYNAPSE_REPORT_STATS: "yes"
+    ports:
+      - "8008:8008"
+  element:
+    image: vectorim/element-web
+    volumes:
+      - "./element_data/config.json:/app/config.json"
+    ports:
+      - "80:80"
+    depends_on:
+      - synapse
