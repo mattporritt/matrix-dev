@@ -14,6 +14,6 @@ services:
     volumes:
       - "./element_data/config.json:/app/config.json"
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - synapse
